@@ -16,7 +16,7 @@ class OtoDomScrapper():
         self.html_houses_list = []
 
         options = Options()
-        options.add_argument("window-size=1920,1080")
+        options.add_argument("window-size=800,600")
         
         self.driver = webdriver.Chrome(chrome_options=options, executable_path=path)
         self.driver.implicitly_wait(10)
@@ -70,111 +70,88 @@ class OtoDomScrapper():
 
     
     def get_house_info(self, path: str):
-        control_sum = 0
         self.driver.get(path)
 
-        # title - tytul ogloszenia
-        # try:
-        #     title = self.driver.find_element(by=By.XPATH, value='//*[@id="__next"]/main/div[2]/div[2]/header/h1').text
-        # except NoSuchElementException:
-        #     title = -1
-        #     control_sum += 1
-
-        # address
         try:
-            address = self.driver.find_element(by=By.XPATH, value='//*[@id="__next"]/main/div[2]/div[2]/header/div[3]/a').text
+            title = self.driver.find_element(by=By.CSS_SELECTOR, value='[data-cy="adPageAdTitle"]').text
+        except NoSuchElementException:
+            title = -1
+
+        try:
+            address = self.driver.find_element(by=By.CSS_SELECTOR, value='[aria-label="Adres"]').text
         except NoSuchElementException:
             address = -1
-            control_sum += 1
 
-        # price - cena 
         try:
-            price = self.driver.find_element(by=By.XPATH, value='//*[@id="__next"]/main/div[2]/div[2]/header/strong').text
+            price = self.driver.find_element(by=By.CSS_SELECTOR, value='[aria-label="Cena"]').text
         except NoSuchElementException:
             price = -1
-            control_sum += 1
 
-        # price per square meter - cena za metr
         try:
-            price_m2 = self.driver.find_element(by=By.XPATH, value='//*[@id="__next"]/main/div[2]/div[2]/header/div[4]').text
+            price_m2 = self.driver.find_element(by=By.CSS_SELECTOR, value='[aria-label="Cena za metr kwadratowy"]').text
         except NoSuchElementException:
             price_m2 = -1
-            control_sum += 1
 
-        if control_sum == 3:
-            print("record broken ",path)
-            return {}
-
-        # square meters - powierzchnia
         try:
-            m2 = self.driver.find_element(by=By.XPATH, value='//*[@id="__next"]/main/div[2]/div[2]/div[1]/div/div[1]/div[2]/div').text
+            area_m2 = self.driver.find_element(by=By.CSS_SELECTOR, value='[aria-label="Powierzchnia"]').text.split()[1]
         except NoSuchElementException:
-            m2 = -1
+            area_m2 = -1
 
-        # rooms - pokoje
         try:
-            rooms = self.driver.find_element(by=By.XPATH, value='//*[@id="__next"]/main/div[2]/div[2]/div[1]/div/div[3]/div[2]/div').text
+            rooms = self.driver.find_element(by=By.CSS_SELECTOR, value='[aria-label="Liczba pokoi"]').text.split()[2]
         except NoSuchElementException:
             rooms = -1
 
-        # floor - pietro 
         try:
-            floor = self.driver.find_element(by=By.XPATH, value='//*[@id="__next"]/main/div[2]/div[2]/div[1]/div/div[5]/div[2]/div').text
+            floor = self.driver.find_element(by=By.CSS_SELECTOR, value='[aria-label="Piętro"]').text
         except NoSuchElementException:
             floor = -1
 
-        # balkon / ogrod / taras
         try:
-            balcony = self.driver.find_element(by=By.XPATH, value='//*[@id="__next"]/main/div[2]/div[2]/div[1]/div/div[6]/div[2]/div').text
+            outdoors = self.driver.find_element(by=By.CSS_SELECTOR, value='[aria-label="Balkon / ogród / taras"]').text.split("\n")[1]
         except NoSuchElementException:
-            balcony = -1
+            outdoors = -1
 
-        # parking space / garage
         try:
-            garage = self.driver.find_element(by=By.XPATH, value='//*[@id="__next"]/main/div[2]/div[2]/div[1]/div/div[8]/div[2]/div').text
+            parking = self.driver.find_element(by=By.CSS_SELECTOR, value='[aria-label="Miejsce parkingowe"]').text.split("\n")[1]
         except NoSuchElementException:
-            garage = -1
+            parking = -1
 
-        # market - rynek - pierwotny / wtorny
         try:
-            market = self.driver.find_element(by=By.XPATH, value='//*[@id="__next"]/main/div[2]/div[2]/div[3]/div/div[1]/div[2]/div').text
+            market = self.driver.find_element(by=By.CSS_SELECTOR, value='[aria-label="Rynek"]').text.split()[1]
         except NoSuchElementException:
             market = -1
 
-        # build_yr - rok budowy
         try:
-            build_yr = self.driver.find_element(by=By.XPATH, value='//*[@id="__next"]/main/div[2]/div[2]/div[3]/div/div[4]/div[2]/div').text
+            build_yr = self.driver.find_element(by=By.CSS_SELECTOR, value='[aria-label="Rok budowy"]').text.split()[2]
         except NoSuchElementException:
             build_yr = -1
 
-        # rodzaj zabudowy
         try:
-            building_type = self.driver.find_element(by=By.XPATH, value='//*[@id="__next"]/main/div[2]/div[2]/div[3]/div/div[5]/div[2]/div').text
+            building_type = self.driver.find_element(by=By.CSS_SELECTOR, value='[aria-label="Rodzaj zabudowy"]').text.split()[2]
         except NoSuchElementException:
             building_type = -1
 
-        # winda
         try:
-            elevator = self.driver.find_element(by=By.XPATH, value='//*[@id="__next"]/main/div[2]/div[2]/div[3]/div/div[7]/div[2]/div').text
+            elevator = self.driver.find_element(by=By.CSS_SELECTOR, value='[aria-label="Winda"]').text.split()[1]
         except NoSuchElementException:
             elevator = -1
 
-        # heating_type
         try:
-            heating_type = self.driver.find_element(by=By.XPATH, value='//*[@id="__next"]/main/div[2]/div[2]/div[1]/div/div[10]/div[2]/div').text
+            heating_type = self.driver.find_element(by=By.CSS_SELECTOR, value='[aria-label="Ogrzewanie"]').text.split()[1]
         except NoSuchElementException:
             heating_type = -1
 
         return {
-            # 'title' : title,
+            'title' : title,
             'address' : address,
             'price' : price,
             'price_m2' : price_m2,
-            'm2' : m2,
+            'area_m2' : area_m2,
             'rooms' : rooms,
             'floor' : floor,
-            'balcony' : balcony,
-            'garage' : garage,
+            'outdoors' : outdoors,
+            'parking' : parking,
             'market' : market,
             'build_yr' : build_yr,
             'building_type' : building_type,

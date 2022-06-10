@@ -1,0 +1,27 @@
+,title,address,price,price_m2,area_m2,rooms,floor,outdoors,parking,market,build_yr,building_type,elevator,heating_type
+0,Mieszkanie GDYNIA Chylonia ( do zamieszkania ),"Gdynia, Chylonia, Chylońska 11",479 000 zł,"<selenium.webdriver.remote.webelement.WebElement (session=""9e7207f0bf398b66e41ffa5deaf6b8b9"", element=""44a17973-1bd8-44e7-8375-d991be0efba1"")>","48,7",3,"Piętro
+1/10",balkon,zapytaj,wtórny,1970,blok,nie,miejskie
+1,Prestiżowe mieszkanie na osiedlu Fikakowo w Gdyni,"Gdynia, Wielki Kack, ul. Lipowa",1 589 000 zł,"<selenium.webdriver.remote.webelement.WebElement (session=""9e7207f0bf398b66e41ffa5deaf6b8b9"", element=""01013ca2-efb2-4142-8dd9-931a71b7324b"")>","125,65",4,"Piętro
+3/3","balkon, taras",garaż/miejsce parkingowe,wtórny,2007,blok,tak,miejskie
+2,Super lokalizacja !!!! Okazja !!!!,"Gdynia, Wzgórze Św. Maksymiliana, ul. Kazimierza Górskiego",577 000 zł,"<selenium.webdriver.remote.webelement.WebElement (session=""9e7207f0bf398b66e41ffa5deaf6b8b9"", element=""a1e56dd7-0d9e-443b-a13c-82eb99ee1a24"")>",46,2,"Piętro
+1/17",balkon,zapytaj,wtórny,2021,blok,tak,miejskie
+3,Nowoczesne Mieszaknie 3 Pokojowe - Okazja!!!,"Gdynia, Pogórze, Staszica",540 000 zł,"<selenium.webdriver.remote.webelement.WebElement (session=""9e7207f0bf398b66e41ffa5deaf6b8b9"", element=""cc82be12-ce9f-4a86-8e54-34c033e56e4d"")>",53,3,"Piętro
+3/3",balkon,garaż/miejsce parkingowe,wtórny,2014,apartamentowiec,nie,miejskie
+4,"Mieszkanie 4-pokojowe, ul, Abrahama","Gdynia, Śródmieście, Centrum, ul. Antoniego Abrahama",2 950 000 zł,"<selenium.webdriver.remote.webelement.WebElement (session=""9e7207f0bf398b66e41ffa5deaf6b8b9"", element=""10ed5f87-0b31-4bd2-bf73-b72f4eba278e"")>",115,4,"Piętro
+1/5",balkon,garaż/miejsce parkingowe,wtórny,2016,kamienica,tak,miejskie
+5,3-pokojowe mieszkanie po remoncie na Grabówku,"Gdynia, Grabówek, Stefana Ramułta",439 000 zł,"<selenium.webdriver.remote.webelement.WebElement (session=""9e7207f0bf398b66e41ffa5deaf6b8b9"", element=""b676c3bc-15e4-4394-a2f2-ed84ed09755f"")>",45,2,"Piętro
+2/8",zapytaj,garaż/miejsce parkingowe,wtórny,brak,kamienica,nie,miejskie
+6,Sprzedam mieszkanie Gdynia Redłowo,"Gdynia, Redłowo, ul. gen. Józefa Hallera",1 643 000 zł,"<selenium.webdriver.remote.webelement.WebElement (session=""9e7207f0bf398b66e41ffa5deaf6b8b9"", element=""e0c33c30-954d-4596-92e6-9933ce44492c"")>",106,3,"Piętro
+1/2","balkon, ogródek, taras",garaż/miejsce parkingowe,wtórny,1936,kamienica,nie,gazowe
+7,"Osiedla Zamek, 3 pok. Gdynia Pustki Cisowskie","Gdynia, Pustki Cisowskie-Demptowo, Pustki Cisowskie, Chabrowa",675 000 zł,"<selenium.webdriver.remote.webelement.WebElement (session=""9e7207f0bf398b66e41ffa5deaf6b8b9"", element=""96ef9054-a5d1-4121-b50d-397ff968ac7b"")>","66,37",3,"Piętro
+parter/4","balkon, taras",garaż/miejsce parkingowe,wtórny,1995,brak,nie,zapytaj
+8,Piękne 3 pok mieszkanie po generalnym remoncie.,"Gdynia, Cisowa, ul. Chylońska",463 000 zł,"<selenium.webdriver.remote.webelement.WebElement (session=""9e7207f0bf398b66e41ffa5deaf6b8b9"", element=""12d5b15c-4696-49ab-8f33-b843c8c6216e"")>",48,3,"Piętro
+3/4",balkon,zapytaj,wtórny,1979,blok,nie,miejskie
+9,"Mieszkanie, 37 m², Gdynia","Gdynia, Śródmieście",469 900 zł,"<selenium.webdriver.remote.webelement.WebElement (session=""9e7207f0bf398b66e41ffa5deaf6b8b9"", element=""f98e38f1-2be7-4f08-afe0-6b87ce1982f4"")>",37,2,"Piętro
+3/4",zapytaj,garaż/miejsce parkingowe,wtórny,brak,blok,nie,miejskie
+10,Dwupokojowe mieszkanie w ścisłym centrum Gdyni,"Gdynia, Śródmieście, Centrum, ul. Hieronima Derdowskiego",864 000 zł,"<selenium.webdriver.remote.webelement.WebElement (session=""9e7207f0bf398b66e41ffa5deaf6b8b9"", element=""999dffcf-d0cd-4571-b1ae-11f63a46ac50"")>","45,5",2,"Piętro
+3/5",balkon,garaż/miejsce parkingowe,wtórny,1960,kamienica,nie,miejskie
+11,Mały Kack 2 pokoje zamknięte osiedle !,"Gdynia, Mały Kack",433 000 zł,"<selenium.webdriver.remote.webelement.WebElement (session=""9e7207f0bf398b66e41ffa5deaf6b8b9"", element=""534f67dc-801e-44ca-a3a7-92e53f438522"")>","38,7",2,"Piętro
+1/2","balkon, taras",garaż/miejsce parkingowe,wtórny,2022,brak,nie,zapytaj
+12,M1 - dwupokojowe mieszkanie z ogrodem,"Gdynia, Leszczynki, ul. Kaspra Geskiego",399 015 zł,"<selenium.webdriver.remote.webelement.WebElement (session=""9e7207f0bf398b66e41ffa5deaf6b8b9"", element=""80cbea2d-01f8-4273-b63a-9f747edd85f6"")>","34,94",2,"Piętro
+parter/3","ogródek, taras",garaż/miejsce parkingowe,pierwotny,2022,blok,tak,miejskie

@@ -1,4 +1,4 @@
-from otodom_scrapper import OtoDomScrapper
+from otodom_scraper import OtoDomScrapper
 
 DRIVER_PATH = '/Users/kordianpiduch/Downloads/chromedriver'
 
