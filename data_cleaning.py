@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 
+# read file from scraper
 df = pd.read_csv('../data/raw/otodom.csv', index_col=0, na_values='-1')
 
 # drop unnecessary columns
