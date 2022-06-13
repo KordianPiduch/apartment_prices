@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 
 # read file from scraper
-df = pd.read_csv('../data/raw/otodom.csv', index_col=0, na_values='-1')
+df = pd.read_csv('./data/raw/otodom.csv', index_col=0, na_values='-1')
 
 # drop unnecessary columns
 df.drop('title', axis=1, inplace=True)
@@ -12,26 +12,26 @@ df = df.replace('zapytaj', np.nan)
 df = df.replace('brak', np.nan)
 
 # area
-df["area_m2"] = df["area_m2"].str.replace(',','.').astype(float) 
+df["area_m2"] = df["area_m2"].str.replace(',', '.').astype(float)
 
 # rooms
-df["rooms"] = df['rooms'].apply(lambda x: x if str(x).isdecimal() else np.nan).astype(float)  # string "wiecej" replaced with np.nan
+df["rooms"] = df['rooms'].apply(lambda x: x if str(x).isdecimal() else np.nan).astype(float)
 
 # price per square meters to float 
 df['price_m2'] = df['price_m2'].str[:-5].str.replace(' ', '').astype(float)
 
-
 # total price
-df['price'] = df['price'].replace('Zapytaj o cenę', np.nan).str.replace('zł', 'pln').str.replace(' ', '').str.replace(',', '.')
+df['price'] = df['price']\
+    .replace('Zapytaj o cenę', np.nan)\
+    .str.replace('zł', 'pln')\
+    .str.replace(' ', '').str.replace(',', '.')
 
 df['currency'] = df.price[~df.price.isna()].apply(lambda x: x[-3:].lower())  # helping column
 df['price'] = df.price[~df.price.isna()].apply(lambda x: x[:-3]).astype(float)
 
-df[df['currency'] == 'eur']  # only 3 apartments in dataset has price in eur. But we got price per square meter in pln and apartment area.
+df_eur = df[df['currency'] == 'eur']  # only 3 apartments in dataset has price in eur.
 
-
-# change price from eur to pln
-df.loc[df['currency'] == 'eur','price'] = df['price_m2'] * df['area_m2']
+df.loc[df['currency'] == 'eur', 'price'] = df['price_m2'] * df['area_m2']  # change price from eur to pln
 df.drop('currency', axis=1, inplace=True)  # drop helping column
 
 
@@ -49,6 +49,7 @@ def make_floor(series):
     s[s1.index] = s1
     return s
 
+
 df['floor'] = make_floor(df.floor)
 
 # divide floor column to floor and max floor column 
@@ -62,18 +63,42 @@ df['floor'] = df['floor'].astype(float)
 df['max_floor'] = df['max_floor'].astype(float)
 
 # outdoors
-# create new columns: balkon, ogrodek, taras
-df['balkon'] = df['outdoors'].apply(lambda x: 1 if 'balkon' in str(x) else 0)
-df['ogrodek'] = df['outdoors'].apply(lambda x: 1 if 'ogródek' in str(x) else 0)
-df['taras'] = df['outdoors'].apply(lambda x: 1 if 'taras' in str(x) else 0)
+df['balcony'] = df['outdoors'].apply(lambda x: 1 if 'balkon' in str(x) else 0)
+df['backyard'] = df['outdoors'].apply(lambda x: 1 if 'ogródek' in str(x) else 0)
+df['terrace'] = df['outdoors'].apply(lambda x: 1 if 'taras' in str(x) else 0)
 df.drop('outdoors', axis=1, inplace=True)
 
 # parking
-df['parking'] = df['parking'].apply(lambda x: 1 if str(x) == 'garaż/miejsce parkingowe' else 0)  # there is 'garaz/miejsce parkingowe' or NaN -> all NaN will be 0
+df['parking'] = df['parking'].apply(lambda x: 1 if str(x) == 'garaż/miejsce parkingowe' else 0)
 
-# from address column create new column with neighbourhood name
-df['dzielnica'] = df.loc[~df.address.isna(), 'address'].apply(lambda x: x.split(',')[1])
+# build year
+df['build_yr'] = df['build_yr'].astype(float)
 
+# building age
+df['building_age'] = 2022 - df['build_yr']
 
-# save to csv - file with a lot of NaN values -> still need to be processed
-df.to_csv('../data/interim/otodom_interim.csv')
+# elevator
+df['elevator'] = df['elevator'].map({'nie': 0, 'tak': 1})
+
+# get district data from address
+df['district'] = df.loc[~df.address.isna(), 'address'].apply(lambda x: x.split(',')[1].strip())
+
+# lack of street or district information
+d1 = df.loc[df.district == 'pomorskie', ['address', 'district']]
+df['district'] = df['district'].replace('pomorskie', np.nan)
+
+# records with street, without district information:
+d2 = df.loc[df.district == 'Gdynia', ['address', 'district']]
+df['street'] = df.loc[d2.index, 'address'].apply(lambda x: x.split(',')[0].strip())
+# OPTIONAL: manually / by hand we can get district based on street
+
+# all apartment without price and price per square meters to drop
+df_na = df.loc[df.price.isna() & df.price_m2.isna()]
+df.drop(df_na.index, axis=0, inplace=True)
+
+# apartments without a price
+df.loc[df.price.isna(), 'price'] = df['price_m2'] * df['area_m2']
+
+df.reset_index(inplace=True)
+
+df.to_csv('data/interim/otodom_interim.csv')
