@@ -99,6 +99,6 @@ df.drop(df_na.index, axis=0, inplace=True)
 # apartments without a price
 df.loc[df.price.isna(), 'price'] = df['price_m2'] * df['area_m2']
 
-df.reset_index(inplace=True)
+df.reset_index(drop=True, inplace=True)
 
 df.to_csv('data/interim/otodom_interim.csv')
