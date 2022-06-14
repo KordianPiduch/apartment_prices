@@ -43,12 +43,15 @@ I made following changes:
 - new columns about district and street from address column. Column with street was created for apartments without data about district. It's possible to get distrct based on street manually (It will not be done in this project)
 - dropped records without price and price per square meter
 
+# EDA
+
+Checked data and plot some graphs. Additional cleaning during eda was nedded.
 
 
 # TO DO
 - [x] Create script to scrap information about apartment prices from otodom.pl using python and selenium.  
 - [x] data cleaning.
-- [ ] eda + feature engineering
+- [x] eda + feature engineering
 - [ ] prepare pipelines for regression models.  
 - [ ] try few models (multilinear regressor with and without regularization, Random Forest Regressor).   
 - [ ] select and fine-tune most promising models to reach the best model (using GridSearchCV).   
