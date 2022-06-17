@@ -52,7 +52,7 @@ Checked data and plot some graphs. Additional cleaning during eda was nedded.
 - [x] Create script to scrap information about apartment prices from otodom.pl using python and selenium.  
 - [x] data cleaning.
 - [x] eda + feature engineering
-- [ ] prepare pipelines for regression models.  
+- [x] prepare pipelines for regression models.  
 - [ ] try few models (multilinear regressor with and without regularization, Random Forest Regressor).   
 - [ ] select and fine-tune most promising models to reach the best model (using GridSearchCV).   
 - [ ] make this documentation much better.   
