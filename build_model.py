@@ -37,7 +37,7 @@ def check_model(model, X_train, X_test, y_train, y_test, rounds=2):
     
 
 def train_model():
-    df = pd.read_csv('../data/processed/otodom_cleaned.csv', index_col=0)
+    df = pd.read_csv('data/processed/otodom_cleaned.csv', index_col=0)
     X_train, X_test, y_train, y_test = build_data_sets(df=df)
 
     model = GradientBoostingRegressor(**MODEL_CONFIG)
