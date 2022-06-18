@@ -5,6 +5,7 @@ from sklearn.impute import SimpleImputer
 from sklearn.pipeline import Pipeline
 from sklearn.compose import ColumnTransformer
 
+
 FEATURES = ['area_m2', 'rooms', 'build_yr', 'parking', 'terrace', 'district', 'market', 'building_type']
 TARGET = 'price'
 
@@ -20,9 +21,7 @@ def build_features(df, features, target):
     return X, y
 
 
-def split_sets(df, test_size=0.2):
-    X, y = build_features(df, FEATURES, TARGET)
-
+def split_sets(X, y, test_size=0.2):
     attr_num = X.select_dtypes(include='number').columns
     attr_cat = X.select_dtypes(exclude='number').columns
 
@@ -59,3 +58,8 @@ def split_sets(df, test_size=0.2):
     )
 
     return X_train_tr, X_test_tr, y_train, y_test
+
+
+def build_data_sets(df, features=FEATURES, target=TARGET):
+    X, y = build_features(df, features, target)
+    return split_sets(X, y)
