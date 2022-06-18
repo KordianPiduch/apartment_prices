@@ -54,12 +54,7 @@ Might be usefull:
 # Model building
 For price predictions I decided to use mean absolute error as metric, becuase it's easy to interpret. I tried few models, including: Linear Regression, Lasso, Radnom Forest and Gradient Boost. Also I tried neural network with sklearn MLPRegressor, but the results wasn't nescessery good. I Decided to go forward with Gradient Boost Regressore and fine-tune it with grid search. 
 
-I tried some diferrent grid search params, and I decided to choose second model because it's generalize better. 
-
-	     train	|  test
-mae	   123664 |  165291
-r2	   0.8  	|  0.63
-rmse	 308041 |  377374
+I tried some different grid search params, and I decided to choose second model because it's generalize better. 
 
 Mean Absolute Error equal to 165 291 pln - it's not great, not terrible. Most of apartments in my data got pricetag below 1 000 000 pln, so I checked MAE for those in my test set, and got MAE = 81 784 pln. 
 
