@@ -30,10 +30,11 @@ def check_model(model, X_train, X_test, y_train, y_test, rounds=2):
     rmse_test = int(mean_squared_error(y_test, y_pred_test, squared=False))
 
     # show results
-    print("\t", "train\t| ", "test")
-    print('mae\t', mae_train, '| ', mae_test)
-    print('r2\t', r2_train, '\t| ', r2_test)
-    print('rmse\t', rmse_train, '| ', rmse_test)
+    print('|', "".center(6), '|', 'train'.center(10), '|', 'test'.center(10), '|')
+    print('*', ''.center(6, '-'),'*', ''.center(10,'-'), '*', ''.center(10,'-'), '*')
+    print('|', 'MAE'.center(6),'|', str(mae_train).center(10), '|', str(mae_test).center(10), '|')
+    print('|', 'R2'.center(6),'|', str(r2_train).center(10), '|', str(r2_test).center(10), '|')
+    print('|', 'RMSE'.center(6),'|', str(rmse_train).center(10), '|', str(rmse_test).center(10), '|')
     
 
 def train_model():
