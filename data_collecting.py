@@ -1,6 +1,6 @@
 from otodom_scraper import OtoDomScrapper
 
-DRIVER_PATH = '/Users/kordianpiduch/Downloads/chromedriver'
+DRIVER_PATH = 'chromedriver'
 RAW_PATH = './data/raw/otodom_df.csv'
 city = "Gdynia"
 limit = None
